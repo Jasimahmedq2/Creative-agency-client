@@ -1,0 +1,23 @@
+.background-color{
+  background:#111430;
+}
+.main-container{
+  height: 550px;
+}
+
+.mySwiper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+
+}
+
+.mySwiper SwiperSlide{
+  width: 30rem;
+}
+.mySwiper img{
+  width: 29rem;
+}
+

@@ -1,0 +1,10 @@
+.title-style{
+  width: 394px;
+}
+.container-style{
+  position: relative;
+  font-family: poppins;
+  height: 450px;
+  background: #FBD062;
+  clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 69%, 0% 100%);
+}

@@ -1,0 +1,21 @@
+.login-main {
+  box-sizing: border-box;
+  width: 570px;
+  height: 457px;
+  background: #FFFFFF;
+  border: 1px solid #ABABAB;
+  border-radius: 4px;
+}
+
+.login-main button {
+  width: 457px;
+  height: 51px;
+  background: #FFFFFF;
+  border: 1px solid #C7C7C7;
+  border-radius: 57px;
+}
+
+.image-style {
+  width: 150px;
+  height: 47px;
+}
