@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom'
+import { Link, } from 'react-router-dom'
 import auth from '../../firebase.init';
 import logo from '../../images/logos/logo.png'
 
@@ -15,10 +15,9 @@ const Navbar = () => {
     return <h2>loading....</h2>
   }
   const Navbar = <>
-    <li><Link to='/'>Item 1</Link></li>
-    <li><Link to='/'>Item 2</Link></li>
-    <li><Link to='/'>Item 3</Link></li>
-    <li><Link to='/'>Item 4</Link></li>
+    <li><Link to='/'>Home</Link></li>
+    {user && <li><Link to='dashboard'>DashBoard</Link></li>
+}
   </>
   return (
     <div style={{

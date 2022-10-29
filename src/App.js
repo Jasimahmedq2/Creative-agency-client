@@ -1,19 +1,28 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Outlet} from 'react-router-dom'
 import Home from './page/Home/Home';
-import Navbar from './page/Shared/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './page/Authentication/Login';
+import Dashboard from './page/Dashboard/Dashboard';
+import Root from './page/Dashboard/Root';
+import Order from './page/Dashboard/user/Order';
+import MakeAdmin from './page/Dashboard/Admin/MakeAdmin';
+import AddService from './page/Dashboard/AddService';
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/' element={<Home />} />
+        <Route path='login' element={<Login />} />
+        <Route path='dashboard' element={<Dashboard></Dashboard>}>
+         <Route index element={<Root />}/>
+         <Route path='order' element={<Order />}/>
+         <Route path='makeadmin' element={<MakeAdmin />}/>
+         <Route path='addservice' element={<AddService />}/>
+        </Route>
       </Routes>
       <ToastContainer />
     </div>

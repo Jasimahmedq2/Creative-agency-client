@@ -14,7 +14,7 @@ import carousel5 from '../../images/carousel-5.png'
 const Projects = () => {
   return (
     <div className='background-color'>
-      <h2 className='text-xl font-bold text-white pt-16'>Here are some of <span style={{color: '#7AB259'}}>our works</span></h2>
+      <h2 className='text-xl font-bold text-white pt-16 text-center'>Here are some of <span style={{color: '#7AB259'}}>our works</span></h2>
     <div className='main-container flex justify-center items-center'>
       <Swiper
         spaceBetween={10}

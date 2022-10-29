@@ -1,10 +1,20 @@
-.title-style{
-  width: 394px;
-}
+
 .container-style{
   position: relative;
   font-family: poppins;
-  height: 450px;
   background: #FBD062;
-  clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 69%, 0% 100%);
+ overflow-y: hidden;
 }
+
+@media  screen and (min-width: 800px ) {
+  .container-style{
+    clip-path: polygon(0 84%, 35% 78%, 70% 71%, 100% 64%, 100% 0%, 0% 0%);
+
+  }
+}
+@media screen and (min-width: 1000px) {
+ .container-style{
+  clip-path: polygon(0 66%, 35% 59%, 74% 53%, 100% 49%, 100% 0%, 0% 0%);
+ } 
+}
+

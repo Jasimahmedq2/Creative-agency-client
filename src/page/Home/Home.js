@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../Shared/Navbar';
 import Banner from './Banner';
 import Email from './Email';
 import Projects from './Projects';
@@ -9,6 +10,7 @@ import SmallBanner from './SmallBanner';
 const Home = () => {
   return (
     <div>
+      <Navbar></Navbar>
       <Banner />
       <SmallBanner />
       <Service />

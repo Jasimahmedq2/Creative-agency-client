@@ -4,6 +4,7 @@ import './Reviews.css'
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([])
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:5000/review')
@@ -16,22 +17,23 @@ const Reviews = () => {
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {
           reviews.map(review => {
+            const {description, picture, name, profession} = review
             return (
               <div>
                 <div class="lg:max-w-lg  card-style">
                   <div className='flex  items-center  py-5 '>
                     <div class="avatar ml-5">
                       <div class="w-12 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2 ">
-                        <img src={review.picture} alt="user" />
+                        <img src={picture} alt="user" />
                       </div>
                     </div>
                     <div className='text-start ml-5'>
-                      <h2 class="">{review.name}</h2>
-                      <h2 class="">{review.profession}</h2>
+                      <h2 class="">{name}</h2>
+                      <h2 class="">{profession}</h2>
                     </div>
                   </div>
                   <div class=" items-center text-center">
-                    <p>{review.description}</p>
+                    <p>{description}</p>
                   </div>
                 </div>
               </div>
