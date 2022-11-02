@@ -12,13 +12,16 @@ const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
   const [token] = useToken(user)
+
   const from = location?.state?.from?.pathname || '/';
   useEffect(() => {
     if (token) {
       navigate(from, { replace: true })
     }
-  }, [token, token, navigate])
+  }, [ user, navigate])
+
   if (loading) {
     return <p>loading....</p>
   }

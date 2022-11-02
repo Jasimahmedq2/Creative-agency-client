@@ -9,6 +9,7 @@ import Root from './page/Dashboard/Root';
 import Order from './page/Dashboard/user/Order';
 import MakeAdmin from './page/Dashboard/Admin/MakeAdmin';
 import AddService from './page/Dashboard/AddService';
+import AddReview from './page/Dashboard/user/AddReview';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
          <Route path='order' element={<Order />}/>
          <Route path='makeadmin' element={<MakeAdmin />}/>
          <Route path='addservice' element={<AddService />}/>
+         <Route path='addreview' element={<AddReview />}/>
         </Route>
       </Routes>
       <ToastContainer />
