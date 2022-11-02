@@ -60,7 +60,7 @@ const AddService = () => {
               <span className="label-text">title</span>
             </label>
             <input type="text" {...register('title', { required: true })} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-            {errors.name && errors.name.type === "required" && <span className='text-red-400'>title is required</span>}
+            {errors.title && errors.title.type === "required" && <span className='text-red-400'>title is required</span>}
           </div>
 
           <div className="form-control w-full max-w-xs">
@@ -68,7 +68,7 @@ const AddService = () => {
               <span className="label-text">Image</span>
             </label>
             <input type="file" {...register('image', { required: true })} className='input w-1/2 max-w-xs ms-6 type-image label-upload' />
-            {errors.name && errors.name.type === "required" && <span className='text-red-400'>select service image</span>}
+            {errors.image && errors.image.type === "required" && <span className='text-red-400'>select service image</span>}
           </div>
 
         

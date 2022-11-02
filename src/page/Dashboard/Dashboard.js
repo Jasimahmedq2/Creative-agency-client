@@ -1,14 +1,19 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet, Route, useLocation } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useAdmin from '../Hooks/useAdmin';
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth)
+  const [admin] = useAdmin(user)
   const location = useLocation()
   return (
     <div className="drawer drawer-mobile relative">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content mt-12" style={{ background: '#E5E5E5' }}>
         <div className="navbar absolute top-0" style={{ background: '#FFFFFF' }}>
-          
+
           <div className="flex-1">
             {
               location.pathname === "/dashboard/addservice" && <h2 className='text-xl text-red font-bold'>Add Service</h2>
@@ -34,15 +39,25 @@ const Dashboard = () => {
 
       </div>
       <div className="drawer-side">
-    
+
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 sm:mt-16 overflow-y-auto w-80 text-base-content" style={{ background: '#FFFFFF' }}>
 
           <li><Link to="/" className=''>home</Link></li>
-          <li><Link to='order'>My order</Link></li>
-          <li><Link to='makeadmin'>Make admin</Link></li>
-          <li><Link to='addservice'>Add Service</Link></li>
-          <li><Link to='addreview'>Add Review</Link></li>
+          {
+            !admin && <>
+              <li><Link to='order'>order</Link></li>
+              <li><Link to='addreview'>Add Review</Link></li>
+            </>
+          }
+          {
+            admin && <>
+              <li><Link to='makeadmin'>Make admin</Link></li>
+              <li><Link to='addservice'>Add Service</Link></li>
+            </>
+          }
+
+
 
         </ul>
 
