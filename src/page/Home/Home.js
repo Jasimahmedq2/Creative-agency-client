@@ -6,8 +6,10 @@ import Projects from './Projects';
 import Reviews from '../Dashboard/user/Reviews';
 import Service from './Service';
 import SmallBanner from './SmallBanner';
+import Loading from '../Shared/Loading';
 
 const Home = () => {
+
   return (
     <div>
       <Navbar></Navbar>

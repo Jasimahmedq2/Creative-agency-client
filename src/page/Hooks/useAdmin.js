@@ -7,7 +7,6 @@ const useAdmin = user => {
   const [adminLoading, setAdminLoading] = useState(true)
 
   const email = user?.email
-  console.log(user.email)
 
   useEffect(() => {
     fetch(`http://localhost:5000/admin/${email}`, {
@@ -19,7 +18,6 @@ const useAdmin = user => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('admin data ', { data })
         setAdmin(data.admin)
         setAdminLoading(false)
       })

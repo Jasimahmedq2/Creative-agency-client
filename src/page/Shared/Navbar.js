@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, } from 'react-router-dom'
 import auth from '../../firebase.init';
 import logo from '../../images/logos/logo.png'
+import Loading from './Loading';
 
 const Navbar = () => {
   const LogOut = () => {
@@ -14,11 +15,10 @@ const Navbar = () => {
   const [user, loading] = useAuthState(auth)
 
   if(loading){
-    return <h2>loading....</h2>
+    return <Loading></Loading>
   }
   const Navbar = <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='/'>{user?.email}</Link></li>
     {user && <li><Link to='dashboard'>DashBoard</Link></li>
 }
   </>

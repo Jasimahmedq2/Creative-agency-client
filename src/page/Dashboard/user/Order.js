@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 import './Order.css'
 const Order = () => {
+  const [user] = useAuthState(auth)
   const { register, formState: { errors, isDirty, isValid  }, handleSubmit, reset } = useForm()
   const onSubmit = data => {
 
@@ -62,7 +65,8 @@ const Order = () => {
       {errors.name && errors.name.type === "required" && <span className='text-red-500'>name is required</span>}
         <input
           type="text"
-          placeholder="email "
+          value={user?.email}
+          readOnly
           className="input order-input w-4/6 py-8 shadow-xl"
           {...register("email", {
             required: {

@@ -7,6 +7,7 @@ import './Login.css'
 import auth from '../../firebase.init';
 import useToken from '../Hooks/useToken';
 import { useEffect } from 'react';
+import Loading from '../Shared/Loading';
 
 const Login = () => {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ const Login = () => {
   }, [ user, navigate])
 
   if (loading) {
-    return <p>loading....</p>
+    return <Loading></Loading>
   }
 
 

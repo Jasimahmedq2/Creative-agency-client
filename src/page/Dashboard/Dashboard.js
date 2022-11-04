@@ -28,6 +28,12 @@ const Dashboard = () => {
             {
               location.pathname === "/dashboard/addreview" && <h2 className='text-xl text-red font-bold'>Add Review</h2>
             }
+            {
+              location.pathname === "/dashboard/serviceadmin" && <h2 className='text-xl text-red font-bold'>Service List</h2>
+            }
+                        {
+              location.pathname === "/dashboard/servicelist" && <h2 className='text-xl text-red font-bold'>Service List</h2>
+            }
 
           </div>
           <div className="flex-none">
@@ -41,17 +47,19 @@ const Dashboard = () => {
       <div className="drawer-side">
 
         <label for="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 sm:mt-16 overflow-y-auto w-80 text-base-content" style={{ background: '#FFFFFF' }}>
+        <ul className="menu p-4  overflow-y-auto w-80 text-base-content" style={{ background: '#FFFFFF' }}>
 
           <li><Link to="/" className=''>home</Link></li>
           {
             !admin && <>
               <li><Link to='order'>order</Link></li>
               <li><Link to='addreview'>Add Review</Link></li>
+              <li><Link to='servicelist'>service List</Link></li>
             </>
           }
           {
             admin && <>
+              <li><Link to='serviceadmin'>service List</Link></li>
               <li><Link to='makeadmin'>Make admin</Link></li>
               <li><Link to='addservice'>Add Service</Link></li>
             </>

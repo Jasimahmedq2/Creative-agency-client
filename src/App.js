@@ -12,6 +12,8 @@ import AddService from './page/Dashboard/Admin/AddService';
 import AddReview from './page/Dashboard/user/AddReview';
 import RequireAuth from './page/Authentication/RequireAuth';
 import RequireAdmin from './page/Authentication/RequireAdmin';
+import ServiceList from './page/Dashboard/user/ServiceList';
+import ServiceListAdmin from './page/Dashboard/Admin/ServiceListAdmin';
 
 
 
@@ -29,6 +31,7 @@ function App() {
         }>
           <Route index element={<Root />} />
           <Route path='order' element={<Order />} />
+          <Route path='servicelist' element={<ServiceList />} />
           <Route path='makeadmin' element={
 
             <RequireAdmin>
@@ -43,6 +46,11 @@ function App() {
             </RequireAdmin>
 
           } />
+          <Route path='serviceadmin' element={
+            <RequireAdmin>
+              <ServiceListAdmin />
+            </RequireAdmin>
+          }/>
           <Route path='addreview' element={<AddReview />} />
         </Route>
       </Routes>
