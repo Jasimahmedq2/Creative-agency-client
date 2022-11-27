@@ -10,7 +10,7 @@ const useToken = user => {
   const currentEmail = { email: email }
   
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://creative-agency-server.vercel.app/user/${email}`, {
       method: 'PUT',
       headers: {
         "content-type": "application/json"

@@ -10,23 +10,26 @@ const Navbar = () => {
   const LogOut = () => {
     signOut(auth)
     localStorage.removeItem('accessToken')
-   
+
   }
   const [user, loading] = useAuthState(auth)
 
-  if(loading){
+  if (loading) {
     return <Loading></Loading>
   }
   const Navbar = <>
     <li><Link to='/'>Home</Link></li>
-    {user && <li><Link to='dashboard'>DashBoard</Link></li>
-}
+    <li><a href='#emailjs'>contact us</a></li>
+    <li><Link to='dashboard'>DashBoard</Link></li>
+    <li><button className='btn btn-outline'> {!user ? <Link to='/login'>Login</Link> : <button onClick={LogOut}>Sing Out</button>}</button></li>
+  
+    
   </>
   return (
     <div style={{
       background: '#FBD062'
     }} className="navbar px-16">
-      <div className="navbar-start">
+      <div className=" lg:navbar-start navbar-end ">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -35,8 +38,8 @@ const Navbar = () => {
             {Navbar}
           </ul>
         </div>
-        <img style={{width: '150px'}} src={logo} alt="" />
-       
+        <img style={{ width: '150px' }} src={logo} alt="" />
+
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -44,7 +47,7 @@ const Navbar = () => {
           {Navbar}
         </ul>
       </div>
-      <button className='btn btn-accent'> {!user ? <Link to='/login'>Login</Link> : <button onClick={LogOut}>Sing Out</button> }</button>
+
 
     </div>
   );

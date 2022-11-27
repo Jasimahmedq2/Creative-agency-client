@@ -7,18 +7,49 @@ import Reviews from '../Dashboard/user/Reviews';
 import Service from './Service';
 import SmallBanner from './SmallBanner';
 import Loading from '../Shared/Loading';
+import { useState } from 'react';
+import { BiArrowToTop } from 'react-icons/bi'
+
 
 const Home = () => {
+  const [visible, setVisible] = useState(false)
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setVisible(true)
+    }
+    else if (scrolled <= 300) {
+      setVisible(false)
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  window.addEventListener('scroll', toggleVisible);
 
   return (
-    <div>
-      <Navbar></Navbar>
-      <Banner />
-      <SmallBanner />
-      <Service />
-      <Projects />
-      <Reviews />
-      <Email />
+    <div className='relative'>
+      {
+        visible && <button onClick={scrollToTop} className="right-10 bottom-6 fixed z-20 topButton">
+          <BiArrowToTop className='text-6xl hover:shadow-lg rounded-lg hover:text-white hover:bg-black bg-slate-50  '/>
+        </button>
+      }
+      <div>
+        <Navbar></Navbar>
+        <Banner />
+        <SmallBanner />
+        <Service />
+        <Projects />
+        <Reviews />
+        <Email />
+      </div>
+
+
     </div>
   );
 };

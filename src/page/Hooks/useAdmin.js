@@ -9,7 +9,7 @@ const useAdmin = user => {
   const email = user?.email
 
   useEffect(() => {
-    fetch(`http://localhost:5000/admin/${email}`, {
+    fetch(`https://creative-agency-server.vercel.app/admin/${email}`, {
       method: 'GET',
       headers: {
         "content-type":"application/json",

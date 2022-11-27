@@ -1,8 +1,7 @@
 .card-style{
-  border:   1px solid #BFBFBF;
+  border:   1px solid rgba(191, 191, 191, 1);
   border-radius: 4px;
   min-height: 300px;
-  background: #E5E5E5;
-  content: "";
+  background: #e5e5e5;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 79% 84%, 50% 75%, 0% 75%);
 }

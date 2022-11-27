@@ -33,7 +33,7 @@ const Order = () => {
       image: result?.data?.url
       }
       
-      fetch('http://localhost:5000/order', {
+      fetch('https://creative-agency-server.vercel.app/order', {
         method: 'POST',
         headers: {
           "content-type" : "application/json",
@@ -60,14 +60,14 @@ const Order = () => {
     <div className='mt-12 mx-6'>
       <form onSubmit={handleSubmit(onSubmit)} className="flex-col space-y-4 grid grid-rows-1">
         <input type="text" {...register("name", { required: true })} placeholder='your Name/Company Name'
-          className="input order-input w-4/6 py-8 shadow-xl " />
+          className="input order-input sm:w-4/6 w-11/12 py-8 shadow-xl " />
 
       {errors.name && errors.name.type === "required" && <span className='text-red-500'>name is required</span>}
         <input
           type="text"
           value={user?.email}
           readOnly
-          className="input order-input w-4/6 py-8 shadow-xl"
+          className="input order-input sm:w-4/6 w-11/12 py-8 shadow-xl"
           {...register("email", {
             required: {
               value: true,
@@ -84,14 +84,14 @@ const Order = () => {
         {errors.email?.type === 'pattern' && <span className="text-sm text-red-500">{errors.email.message}</span>}
 
         <input type="text" {...register("service", { required: true })} placeholder='Service Name'
-          className="input order-input w-4/6 py-8 shadow-xl " />
+          className="input order-input sm:w-4/6 w-11/12 py-8 shadow-xl " />
 
         {errors.service && errors.service.type === "required" && <span className='text-red-500'> service name is required</span>}
 
-        <textarea {...register("description", { required: true })} className="textarea order-textarea w-4/6 py-8 shadow-xl" placeholder="describe your service" />
+        <textarea {...register("description", { required: true })} className="textarea order-textarea sm:w-4/6 w-11/12 py-8 shadow-xl" placeholder="describe your service" />
 
         {errors.description && errors.description.type === "required" && <span className='text-red-500'> description  is required</span>}
-        <div className='w-4/6 flex space-x-4' >
+        <div className='sm:w-4/6 w-11/12 flex space-x-4' >
 
           <div className='w-1/2'>
             <input type="number" placeholder='price' {...register("price", { required: true })} className="input  order-input w-full py-8 shadow-xl" />
@@ -105,7 +105,7 @@ const Order = () => {
 
         </div>
 
-        <input type="submit" value="submit" className='btn btn-primary w-1/4' disabled={!isDirty && !isValid}/>
+        <input type="submit" value="submit" className='btn btn-primary w-1/4' disabled={ !isDirty && !isValid}/>
 
       </form>
     </div>

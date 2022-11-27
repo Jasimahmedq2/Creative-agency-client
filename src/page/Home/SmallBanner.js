@@ -7,7 +7,7 @@ import airbnb from '../../images/logos/airbnb.png'
 
 const SmallBanner = () => {
   return (
-    <div className='flex justify-center py-6'>
+    <div className='flex justify-center md:pb-20 w-11/12'>
       <img className='p-3' style={{width: '125px', height: '44px'}} src={netflix} alt="" />
       <img className='p-3' style={{width: '125px', height: '44px'}} src={google} alt="" />
       <img className='p-3' style={{width: '125px', height: '44px'}} src={slack} alt="" />

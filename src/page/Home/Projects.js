@@ -20,26 +20,39 @@ const Projects = () => {
         spaceBetween={10}
         slidesPerView={2}
         Pagination={{ clickable: true }}
+
+        breakpoints={{
+          350: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          600: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        }}
+
         className="mySwiper ">
         <SwiperSlide>
+          <a href="https://tools-manufacturer-jasim.netlify.app/" target="_blank">
           <img src={carousel1} alt="" />
+          </a>
+        
         </SwiperSlide>
         <SwiperSlide>
 
+        <a href="https://crypto-currency-jasim.netlify.app/" target="_blank">
           <img src={carousel2} alt="" />
+          </a>
 
         </SwiperSlide>
         <SwiperSlide>
 
+        <a href="https://jasim-personal-portfolio.netlify.app/" target="_blank">
           <img src={carousel4} alt="" />
+          </a>
 
         </SwiperSlide>
-        <SwiperSlide>
-
-          <img src={carousel5} alt="" />
-
-        </SwiperSlide>
-
       </Swiper>
     </div>
     </div>

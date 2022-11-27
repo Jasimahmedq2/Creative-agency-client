@@ -8,7 +8,7 @@ const MakeAdmin = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const onSubmit = data => {
     const email = data.email
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://creative-agency-server.vercel.app/user/admin/${email}`, {
       method: 'PUT',
       headers: {
         "content-type": "application/json",

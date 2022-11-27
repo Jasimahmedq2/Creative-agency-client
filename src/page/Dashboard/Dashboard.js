@@ -1,20 +1,24 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet, Route, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, Route, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../Hooks/useAdmin';
+import logo from '../../images/logos/logo.png'
+import {BiArrowBack} from 'react-icons/bi'
+import {AiFillHome} from 'react-icons/ai'
 
 const Dashboard = () => {
   const [user] = useAuthState(auth)
   const [admin] = useAdmin(user)
   const location = useLocation()
+  const navigate = useNavigate()
   return (
-    <div className="drawer drawer-mobile relative">
+    <div className="drawer drawer-mobile relative bg-transparent">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content mt-12" style={{ background: '#E5E5E5' }}>
-        <div className="navbar absolute top-0" style={{ background: '#FFFFFF' }}>
+      <div className="drawer-content mt-12 " style={{ background: '#E5E5E5' }}>
+        <div className="navbar absolute top-0" style={{ background: '#FFFFFF' }}> 
+          <div className="flex" >
 
-          <div className="flex-1">
             {
               location.pathname === "/dashboard/addservice" && <h2 className='text-xl text-red font-bold'>Add Service</h2>
             }
@@ -44,26 +48,30 @@ const Dashboard = () => {
 
 
       </div>
-      <div className="drawer-side">
-
+      <div className="drawer-side  bg-transparent">
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4  overflow-y-auto w-80 text-base-content" style={{ background: '#FFFFFF' }}>
+        <img style={{ width: '150px' }} src={logo} alt="" className='pb-10'/>
+        <div className='flex justify-between items-center py-6'>
+        <button onClick={() => navigate(-1)}><BiArrowBack className='text-2xl '/></button>
+        <Link to='/'><AiFillHome className='text-2xl'/></Link>
+        </div>
 
-          <li><Link to="/" className=''>home</Link></li>
           {
             !admin && <>
-              <li><Link to='order'>order</Link></li>
-              <li><Link to='addreview'>Add Review</Link></li>
-              <li><Link to='servicelist'>service List</Link></li>
+              <li><NavLink to='order'>order</NavLink></li>
+              <li><NavLink to='addreview'>Add Review</NavLink></li>
+              <li><NavLink to='servicelist'>service List</NavLink></li>
             </>
           }
           {
             admin && <>
-              <li><Link to='serviceadmin'>service List</Link></li>
-              <li><Link to='makeadmin'>Make admin</Link></li>
-              <li><Link to='addservice'>Add Service</Link></li>
+              <li><NavLink to='serviceadmin'>service List</NavLink></li>
+              <li><NavLink  to='makeadmin'>Make admin</NavLink></li>
+              <li><NavLink to='addservice'>Add Service</NavLink></li>
             </>
           }
+
 
 
 

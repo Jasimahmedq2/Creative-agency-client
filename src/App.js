@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './page/Authentication/Login';
 import Dashboard from './page/Dashboard/Dashboard';
-import Root from './page/Dashboard/Root';
 import Order from './page/Dashboard/user/Order';
 import MakeAdmin from './page/Dashboard/Admin/MakeAdmin';
 import AddService from './page/Dashboard/Admin/AddService';
@@ -14,24 +13,34 @@ import RequireAuth from './page/Authentication/RequireAuth';
 import RequireAdmin from './page/Authentication/RequireAdmin';
 import ServiceList from './page/Dashboard/user/ServiceList';
 import ServiceListAdmin from './page/Dashboard/Admin/ServiceListAdmin';
-
+import './App.css'
+import Register from './page/Authentication/Register';
 
 
 function App() {
+
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />}/>
         <Route path='dashboard' element={
           <RequireAuth>
             <Dashboard>
             </Dashboard>
           </RequireAuth>
         }>
-          <Route index element={<Root />} />
-          <Route path='order' element={<Order />} />
+
           <Route path='servicelist' element={<ServiceList />} />
+
+          <Route path='serviceadmin' element={
+            <RequireAdmin>
+              <ServiceListAdmin />
+            </RequireAdmin>
+          } />
+
+          <Route path='order' element={<Order />} />
           <Route path='makeadmin' element={
 
             <RequireAdmin>
@@ -40,17 +49,13 @@ function App() {
 
           } />
           <Route path='addservice' element={
-            
+
             <RequireAdmin>
               <AddService />
             </RequireAdmin>
 
           } />
-          <Route path='serviceadmin' element={
-            <RequireAdmin>
-              <ServiceListAdmin />
-            </RequireAdmin>
-          }/>
+
           <Route path='addreview' element={<AddReview />} />
         </Route>
       </Routes>
