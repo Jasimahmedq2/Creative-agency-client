@@ -11,12 +11,18 @@ import Loading from '../Shared/Loading';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import Google from '../../images/logos/google.png'
+import { useState } from 'react';
 
-
+const userInfo = {
+  password: 'adminpassword',
+  email: 'admin@gmail.com'
+}
 const Login = () => {
+  const [userEmail, setUserEmail] = useState(userInfo.email)
+  const [userPassword, setUserPassword] = useState(userInfo.password)
   const navigate = useNavigate()
   const location = useLocation()
-  const [signInWithGoogle,  guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
   const [
     signInWithEmailAndPassword,
@@ -31,7 +37,7 @@ const Login = () => {
     const email = data?.email
     const password = data?.password
     signInWithEmailAndPassword(email, password)
-   
+
     console.log(data)
     reset()
   }
@@ -44,65 +50,73 @@ const Login = () => {
     if (token) {
       navigate(from, { replace: true })
     }
-  }, [ user, guser, navigate])
+  }, [user, guser, navigate])
 
 
   if (loading || gloading) {
     return <Loading></Loading>
   }
-let errorMessage;
-  if(error || gerror){
+  let errorMessage;
+  if (error || gerror) {
     errorMessage = <h2 className='text-sm text-red-400 text-bold'> {error?.message}</h2>
   }
 
 
 
   return (
-    <div>
-        <h2 className='text-xl sm:w-1/2 w-11/12 mx-auto py-12'>if you are see admin route? use this email address & password <p className='font-bold text-secondary text-xl'>email: admin@gmail.com</p> <p className='text-xl font-bold text-primary'>password:  adminpassword</p></h2>
-    <div className="sm:w-1/2 w-11/12 mx-auto py-16">
-      <img className='image-style my-12 mx-auto' src={logo} alt="" />
-      <div className='login-main '>
-        <div>
-          <form  onSubmit={handleSubmit(onSubmit)} className=" space-y-4 grid grid-rows-1 px-8 py-8 " >
+    <>
 
-          <input
-            type="email"
-            placeholder='enter email'
-            className="input order-input py-8 shadow-xl"
-            {...register("email", {
-              required: {
-                value: true,
-                message: 'Email is Required'
-              },
-              pattern: {
-                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                message: 'Provide a valid Email'
-              }
-            })}
-          />
+      <div className="sm:w-1/2 w-11/12 mx-auto py-16">
+        <img className='image-style my-12 mx-auto' src={logo} alt="" />
+        <div className='login-main '>
+          <div>
+            <form onSubmit={handleSubmit(onSubmit)} className=" space-y-4 grid grid-rows-1 px-8 py-8 " >
 
-          {errors.email?.type === 'required' && <span className="text-sm text-red-500">{errors.email.message}</span>}
-          {errors.email?.type === 'pattern' && <span className="text-sm text-red-500">{errors.email.message}</span>}
+              <input
+                type="email"
+                placeholder='enter email'
+                className="input order-input py-8 shadow-xl"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: 'Email is Required'
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: 'Provide a valid Email'
+                  }
+                })}
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
 
-          <input type="password" {...register("password", { required: true })} placeholder='enter your password'
-            className="input order-input py-8 shadow-xl " />
+              {errors.email?.type === 'required' && <span className="text-sm text-red-500">{errors.email.message}</span>}
+              {errors.email?.type === 'pattern' && <span className="text-sm text-red-500">{errors.email.message}</span>}
 
-          {errors.password && errors.password.type === "required" && <span className='text-red-500'> password is required</span>}
-          <h2 >Don't have an account?<Link style={{ color: '#3F90FC' }} to='/register'> create account</Link> </h2>
-          {errorMessage}
-          <input type="submit" value="login" className='btn btn-primary w-1/4' disabled={!isDirty && !isValid} />
+              <input
+                type="password"
+                {...register("password", { required: true })} placeholder='enter your password'
+                className="input order-input py-8 shadow-xl "
+                value={userPassword}
+                onChange={(e) => setUserPassword(e.target.value)} 
 
-          </form>
+              />
 
-          <div className="divider">OR</div>
+              {errors.password && errors.password.type === "required" && <span className='text-red-500'> password is required</span>}
+              <h2 >Don't have an account?<Link style={{ color: '#3F90FC' }} to='/register'> create account</Link> </h2>
+              {errorMessage}
+              <input type="submit" value="login" className='btn btn-primary w-1/4' disabled={!isDirty && !isValid} />
 
-          <button onClick={() => signInWithGoogle()} className=' w-full btn btn-outline'><span>Continue With Google</span></button>
+            </form>
 
+            <div className="divider">OR</div>
+
+            <button onClick={() => signInWithGoogle()} className=' w-full btn btn-outline'><span>Continue With Google</span></button>
+
+          </div>
         </div>
       </div>
-    </div>
-    </div>
+    </>
   );
 };
 

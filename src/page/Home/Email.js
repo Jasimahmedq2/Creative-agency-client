@@ -52,7 +52,7 @@ const Email = () => {
           </form>
         </div>
       </div>
-      <h2 className='text-xl font-bold text-black py-12 text-center'>copyright Orange labs 2022</h2>
+      <h2 className='text-xl font-bold text-black py-12 text-center'>copyright Orange labs {(new Date().getFullYear())}</h2>
     </div>
   );
 };
